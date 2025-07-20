@@ -20,7 +20,7 @@ const NoteInput = ({ onAddNote }) => {
         placeholder="Note Title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        className="w-full p-2 border rounded"
+         className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
       />
       <textarea
         placeholder="Note Text"
@@ -30,7 +30,7 @@ const NoteInput = ({ onAddNote }) => {
       />
       <button
         type="submit"
-        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+        className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-all duration-200 shadow"
       >
         Add Note
       </button>
