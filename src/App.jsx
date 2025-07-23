@@ -1,12 +1,22 @@
 import { useState } from "react";
+import { useEffect } from "react";
 import NoteInput from "../components/NoteInput";
 
 function App() {
-  const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState(() => {
+    const storedNotes = localStorage.getItem('notes');
+    return storedNotes ? JSON.parse(storedNotes) : [];
+  });
 
+  useEffect(() => {
+    localStorage.setItem('notes', JSON.stringify(notes));
+  }, [notes]);
+  
+  
   const handleAddNote = (note) => {
     setNotes((prev) => [note, ...prev]);
   };
+  
 
   return (
     <div className="min-h-screen bg-gray-100 py-10 px-4">
