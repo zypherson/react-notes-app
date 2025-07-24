@@ -23,6 +23,14 @@ function App() {
       <div className="max-w-xl mx-auto bg-white p-6 rounded-xl shadow-lg">
         <h1 className="text-3xl font-bold mb-6 text-center text-blue-700">📝 Notes App</h1>
         <NoteInput onAddNote={handleAddNote} />
+    <div className="flex justify-end mb-4">
+    <button
+      onClick={() => setNotes([])}
+      className="text-sm text-red-500 hover:underline"
+     >
+     Clear All Notes
+    </button>
+    </div>
   
         {notes.length === 0 ? (
           <p className="text-gray-500 italic text-center">No notes yet. Add one above!</p>
@@ -38,6 +46,7 @@ function App() {
               </div>
             ))}
           </div>
+          
         )}
       </div>
     </div>

@@ -34,6 +34,7 @@ const NoteInput = ({ onAddNote }) => {
       >
         Add Note
       </button>
+      
     </form>
   );
 };
