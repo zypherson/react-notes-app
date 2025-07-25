@@ -1,8 +1,11 @@
+/* eslint-disable no-unused-vars */
 import { useState } from "react";
 import { useEffect } from "react";
 import NoteInput from "../components/NoteInput";
 
 function App() {
+  const [searchTerm, setSearchTerm] = useState('');
+
   const [notes, setNotes] = useState(() => {
     const storedNotes = localStorage.getItem('notes');
     return storedNotes ? JSON.parse(storedNotes) : [];
@@ -31,6 +34,14 @@ function App() {
      Clear All Notes
     </button>
     </div>
+
+    <input
+        type="text"
+        placeholder="Search notes..."
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        className="w-full p-2 border rounded mb-4 dark:bg-gray-800 dark:text-white"
+    />
   
         {notes.length === 0 ? (
           <p className="text-gray-500 italic text-center">No notes yet. Add one above!</p>
