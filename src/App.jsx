@@ -45,6 +45,9 @@ const filteredNotes = notes.filter(note =>
         onChange={(e) => setSearchTerm(e.target.value)}
         className="w-full p-2 border rounded mb-4 dark:bg-gray-800 dark:text-white"
     />
+    {filteredNotes.map(note => (
+  <NoteCard key={note.id} note={note} />
+))}
   
         {notes.length === 0 ? (
           <p className="text-gray-500 italic text-center">No notes yet. Add one above!</p>
