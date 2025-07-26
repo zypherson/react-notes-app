@@ -9,8 +9,11 @@ function App() {
   const [notes, setNotes] = useState(() => {
     const storedNotes = localStorage.getItem('notes');
     return storedNotes ? JSON.parse(storedNotes) : [];
-  });
 
+  });
+const filteredNotes = notes.filter(note =>
+  note.text.toLowerCase().includes(searchTerm.toLowerCase())
+);
   useEffect(() => {
     localStorage.setItem('notes', JSON.stringify(notes));
   }, [notes]);
