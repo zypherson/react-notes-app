@@ -22,7 +22,14 @@ const filteredNotes = notes.filter(note =>
   const handleAddNote = (note) => {
     setNotes((prev) => [note, ...prev]);
   };
-  
+
+  const togglePin = (id) => {
+  setNotes((prevNotes) =>
+    prevNotes.map((note) =>
+      note.id === id ? { ...note, pinned: !note.pinned } : note
+    )
+  );
+};
 
   return (
     <div className="min-h-screen bg-gray-100 py-10 px-4">
