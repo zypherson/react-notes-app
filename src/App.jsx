@@ -52,26 +52,34 @@ const filteredNotes = notes.filter(note =>
         onChange={(e) => setSearchTerm(e.target.value)}
         className="w-full p-2 border rounded mb-4 dark:bg-gray-800 dark:text-white"
     />
-    {filteredNotes.map(note => (
-  <NoteCard key={note.id} note={note} />
-))}
-  
-        {notes.length === 0 ? (
-          <p className="text-gray-500 italic text-center">No notes yet. Add one above!</p>
-        ) : (
-          <div className="space-y-4 mt-6">
-            {notes.map((note) => (
-              <div
-                key={note.id}
-                className="p-4 rounded-lg shadow border border-gray-200 bg-gradient-to-br from-white to-gray-50"
-              >
-                <h2 className="text-xl font-semibold text-gray-800">{note.title}</h2>
-                <p className="text-gray-600">{note.text}</p>
-              </div>
-            ))}
+    {notes.length === 0 ? (
+  <p className="text-gray-500 italic text-center">No notes yet. Add one above!</p>
+) : (
+  <div className="space-y-4 mt-6">
+    {filteredNotes
+      .sort((a, b) => (b.pinned ? 1 : 0) - (a.pinned ? 1 : 0))
+      .map((note) => (
+        <div
+          key={note.id}
+          className={`p-4 rounded-lg shadow border ${
+            note.pinned ? 'border-yellow-400 bg-yellow-50' : 'border-gray-200 bg-gradient-to-br from-white to-gray-50'
+          }`}
+        >
+          <div className="flex justify-between items-center mb-2">
+            <h2 className="text-xl font-semibold text-gray-800">{note.title}</h2>
+            <button
+              onClick={() => togglePin(note.id)}
+              className="text-sm text-blue-500 hover:underline"
+            >
+              {note.pinned ? 'Unpin' : 'Pin'}
+            </button>
           </div>
-          
-        )}
+          <p className="text-gray-600">{note.text}</p>
+        </div>
+      ))}
+  </div>
+)}
+
       </div>
     </div>
   );
