@@ -16,7 +16,7 @@ const NoteInput = ({ onAddNote }) => {
     setText("");
     setColor(colors[0]);
   };
-
+  
   return (
     <form onSubmit={handleSubmit} className="space-y-2 mb-4">
       <input
